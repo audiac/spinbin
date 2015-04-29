@@ -1,6 +1,6 @@
 Spinbin::Application.routes.draw do
 
-  root 'welcome#index'
+  root 'sessions#new'
 
   get '/register', to: 'users#new'
   get '/login', to: 'sessions#new'
