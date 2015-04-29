@@ -8,6 +8,9 @@
   <div class='nav_item'>
     <%= link_to 'Log Out', logout_path, class: 'btn btn-small' %>
   </div>
+  <div class='nav_item'>
+    <%= link_to 'My Collections', user_collections_path(current_user), class: 'btn btn-small' %>
+  </div>
 <% else %>
   <div class='nav_item'>
     <%= link_to 'Register', register_path, class: 'btn btn-success btn-small' %>
