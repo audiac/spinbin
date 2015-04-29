@@ -7,6 +7,8 @@ Spinbin::Application.routes.draw do
   post '/login', to: 'sessions#create'
   get '/logout', to: 'sessions#destroy'
 
-  resources :users, only: [:show, :create, :edit, :update]
+  resources :users, only: [:show, :create, :edit, :update] do
+    resources :collections
+  end
 
 end

@@ -1,0 +1,15 @@
+<%= render 'shared/errors', object: @collection %>
+
+<%= form_for [@user, @collection] do |f| %>
+  <div class='control-group'>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+  </div>
+
+  <div class='control-group'>
+    <%= f.label :description %>
+    <%= f.text_field :description %>
+  </div>
+
+  <%= f.submit(@collection.new_record? ? 'Create Collection' : 'Update Collection', class: 'btn btn-primary') %>
+<% end %>

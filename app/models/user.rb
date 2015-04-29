@@ -14,4 +14,7 @@ class User < ActiveRecord::Base
 
   has_secure_password validations: false
 
+  has_many :collection_users
+  has_many :collections, through: :collection_users
+
 end
