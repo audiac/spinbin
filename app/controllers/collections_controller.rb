@@ -22,6 +22,10 @@ class CollectionsController < ApplicationController
     end
   end
 
+  def show
+    @collection = @user.collections.find_by(id: params[:id])
+  end
+
   private
 
     def set_user
