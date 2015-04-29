@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
 
   before_action :set_user
+  before_action :require_same_user
 
   def index
   end
@@ -35,4 +36,9 @@ class CollectionsController < ApplicationController
     def collection_params
       params.require(:collection).permit(:name, :description)
     end
+
+    def require_same_user
+      access_denied if current_user != @user
+    end
+
 end
