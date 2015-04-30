@@ -14,9 +14,9 @@ class CollectionsController < ApplicationController
 
   def create
     @collection = @user.collections.build(collection_params)
-    @collection.users << @user
 
     if @collection.save
+      @collection.users << @user
       flash[:notice] = "Collection created."
       redirect_to user_collections_path
     else
