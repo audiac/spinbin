@@ -19,7 +19,11 @@ class ApplicationController < ActionController::Base
 
   def access_denied
     flash[:error] = "Cannot perform this action."
-    redirect_to root_path
+    if logged_in?
+      redirect_to user_collections_path(current_user)
+    else
+      redirect_to root_path
+    end
   end
 
 end
