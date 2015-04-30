@@ -1,7 +1,7 @@
 <%= render 'shared/content_title', title: "#{@user.firstname}'s Collections" %>
 
-<%= @user.collections.each do |collection| %>
+<% @user.collections.each do |collection| %>
   <%= render 'collection', collection: collection, user: @user %>
 <% end %>
 
-<%= link_to 'Create New Collection', new_user_collection_path(@user) %>
+<%= link_to 'Create New Collection', new_user_collection_path(@user), class: 'btn btn-primary' %>

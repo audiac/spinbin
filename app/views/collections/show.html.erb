@@ -34,6 +34,6 @@
   <% end %>
 </div>
 
-  <%= @collection.albums.each do |album| %>
+  <% @collection.albums.each do |album| %>
     <%= render 'albums/album', album: album %>
   <% end %>
