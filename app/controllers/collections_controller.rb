@@ -1,6 +1,7 @@
 class CollectionsController < ApplicationController
 
   before_action :set_user
+  before_action :require_user
   before_action :require_same_user
   before_action :set_collection, only: [:show, :edit, :update]
 
@@ -19,7 +20,6 @@ class CollectionsController < ApplicationController
       flash[:notice] = "Collection created."
       redirect_to user_collections_path
     else
-      flash[:error] = "Error creating collection."
       render :new
     end
   end

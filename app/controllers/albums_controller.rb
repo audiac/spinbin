@@ -9,11 +9,18 @@ class AlbumsController < ApplicationController
     if @album.save
       @collection.albums << @album
       flash[:notice] = "Album added to collection."
-      redirect_to root_path
+      redirect_to user_collection_path(current_user.id, @collection)
     else
       @collection.albums.reload
       render 'collections/show'
     end
+  end
+
+  def destroy
+    album = Album.find(params[:id])
+    album.destroy
+    flash[:notice] = "Album removed from collection."
+    redirect_to :back
   end
 
   private
