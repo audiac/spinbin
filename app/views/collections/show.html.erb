@@ -1,7 +1,8 @@
 <%= link_to 'Edit Collection', edit_user_collection_path(@user, @collection), class: 'btn btn-success pull-right' %>
+
 <%= render 'shared/content_title', title: "#{@collection.name}" %>
 
-<div class="well">
+<div class="well span3 pull-right">
   <%= form_for [@collection, @album] do |f| %>
     <%= render 'shared/errors', object: @album %>
 
@@ -34,6 +35,12 @@
   <% end %>
 </div>
 
+<% if @collection.albums.size == 0 %>
+  <p class="callout-text lowered">
+    Your collection is empty. Add some albums!
+  </p>
+<% else %>
   <% @collection.albums.each do |album| %>
     <%= render 'albums/album', album: album %>
   <% end %>
+<% end %>
