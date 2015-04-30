@@ -2,7 +2,7 @@ class CollectionsController < ApplicationController
 
   before_action :set_user
   before_action :require_same_user
-  before_action :set_collection, only: [:show, :edit]
+  before_action :set_collection, only: [:show, :edit, :update]
 
   def index
   end
@@ -29,6 +29,15 @@ class CollectionsController < ApplicationController
   end
 
   def edit
+  end
+
+  def update
+    if @collection.update(collection_params)
+      flash[:notice] = "Collection updated."
+      redirect_to user_collection_path(@user, @collection)
+    else
+      render :edit
+    end
   end
 
   private
