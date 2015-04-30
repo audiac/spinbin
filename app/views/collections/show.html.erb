@@ -1,5 +1,5 @@
+<%= link_to 'Edit Collection', edit_user_collection_path(@user, @collection), class: 'btn btn-success pull-right' %>
 <%= render 'shared/content_title', title: "#{@collection.name}" %>
-<%= link_to 'Edit Collection', edit_user_collection_path(@user, @collection) %>
 
 <div class="well">
   <%= form_for [@collection, @album] do |f| %>
