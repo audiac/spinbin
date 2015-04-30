@@ -11,4 +11,8 @@ Spinbin::Application.routes.draw do
     resources :collections
   end
 
+  resources :collections do
+    resources :albums
+  end
+
 end

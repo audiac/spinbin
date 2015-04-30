@@ -1,9 +1,7 @@
-<%= render 'shared/content_title', title: "#{@collection.name}" %>
+<%= render 'shared/errors', object: @album %>
 
 <%= form_for [@collection, @album] do |f| %>
-  <%= render 'shared/errors', object: @album %>
-
-  <div class="control-group">
+  <div class='control-group'>
     <%= f.label :title %>
     <%= f.text_field :title %>
   </div>
@@ -28,9 +26,5 @@
     <%= f.text_field :record_label %>
   </div>
 
-  <%= f.submit 'Add Album', class: 'btn btn-primary' %>
-<% end %>
-
-<%= @collection.albums.each do |album| %>
-  <%= render 'albums/album', album: album %>
+  <%= f.submit(@collection.albums.new_record? ? 'Add Album' : 'Update Album', class: 'btn btn-primary') %>
 <% end %>

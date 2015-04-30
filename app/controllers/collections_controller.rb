@@ -2,6 +2,7 @@ class CollectionsController < ApplicationController
 
   before_action :set_user
   before_action :require_same_user
+  before_action :set_collection, only: [:show, :edit]
 
   def index
   end
@@ -24,13 +25,20 @@ class CollectionsController < ApplicationController
   end
 
   def show
-    @collection = @user.collections.find_by(id: params[:id])
+    @album = Album.new
+  end
+
+  def edit
   end
 
   private
 
     def set_user
       @user = User.find_by(id: params[:user_id])
+    end
+
+    def set_collection
+      @collection = @user.collections.find_by(id: params[:id])
     end
 
     def collection_params
