@@ -9,7 +9,7 @@
       <li><%= album.catalog_number %></li>
       <li><%= album.record_label %></li>
       <li><%= link_to 'edit', edit_collection_album_path(@collection, album) %></li>
-      <li><%= link_to 'remove', collection_album_path(@collection, album), method: :delete %></li>
+      <li><%= link_to 'remove', collection_album_path(@collection, album, user: @user), method: :delete %></li>
     </ul>
   </div>
 </div>

@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
 
-  before_action :require_user
+  before_action :set_user, only: [:destroy]
+  before_action :require_same_user, only: [:destroy]
   before_action :set_album, only: [:edit, :update]
   before_action :set_collection, only: [:create, :edit, :update]
 
@@ -49,6 +50,10 @@ class AlbumsController < ApplicationController
 
     def set_collection
       @collection = Collection.find(params[:collection_id])
+    end
+
+    def set_user
+      @user = User.find(params[:user])
     end
 
 end

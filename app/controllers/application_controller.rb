@@ -17,6 +17,10 @@ class ApplicationController < ActionController::Base
     access_denied unless logged_in?
   end
 
+  def require_same_user
+    access_denied if current_user != @user
+  end
+
   def access_denied
     flash[:error] = "Cannot perform this action."
     if logged_in?

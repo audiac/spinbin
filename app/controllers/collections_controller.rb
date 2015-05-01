@@ -54,8 +54,4 @@ class CollectionsController < ApplicationController
       params.require(:collection).permit(:name, :description)
     end
 
-    def require_same_user
-      access_denied if current_user != @user
-    end
-
 end
