@@ -3,7 +3,7 @@ class CollectionsController < ApplicationController
   before_action :set_user
   before_action :require_user
   before_action :require_same_user
-  before_action :set_collection, only: [:show, :edit, :update]
+  before_action :set_collection, only: [:show, :edit, :update, :destroy]
 
   def index
   end
@@ -38,6 +38,15 @@ class CollectionsController < ApplicationController
     else
       render :edit
     end
+  end
+
+  def destroy
+    if @collection.destroy
+      flash[:notice] = "Collection deleted."
+    else
+      flash[:error] = "Could not delete collection."
+    end
+    redirect_to user_collections_path
   end
 
   private
