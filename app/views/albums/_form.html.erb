@@ -1,5 +1,5 @@
 <div class="well span3 pull-right">
-  <%= form_for [@collection, @album] do |f| %>
+  <%= form_for [@collection, @album], html: { id: 'album-add-form' }, remote: true do |f| %>
     <%= render 'shared/errors', object: @album %>
 
     <div class="control-group">

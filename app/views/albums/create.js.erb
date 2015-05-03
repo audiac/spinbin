@@ -1,0 +1,3 @@
+$(".callout-text").remove();
+$("<%= escape_javascript(render @album) %>").appendTo("#album-list");
+$("#album-add-form")[0].reset();

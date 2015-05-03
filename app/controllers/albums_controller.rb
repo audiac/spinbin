@@ -8,13 +8,20 @@ class AlbumsController < ApplicationController
   def create
     @album = @collection.albums.build(album_params)
 
-    if @album.save
-      @collection.albums << @album
-      flash[:notice] = "Album added to collection."
-      redirect_to user_collection_path(current_user.id, @collection)
-    else
-      @collection.albums.reload
-      render 'collections/show'
+    respond_to do |format|
+      if @album.save
+        @collection.albums << @album
+        format.js
+        format.html do
+          flash[:notice] = "Album added to collection."
+          redirect_to user_collection_path(current_user.id, @collection)
+        end
+      else
+        format.html do
+          @collection.albums.reload
+          render 'collections/show'
+        end
+      end
     end
   end
 

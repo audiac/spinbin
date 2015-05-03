@@ -4,12 +4,14 @@
 
 <%= render 'albums/form' %>
 
-<% if @collection.albums.size == 0 %>
-  <p class="callout-text lowered">
-    Your collection is empty. Add some albums!
-  </p>
-<% else %>
-  <% @collection.albums.each do |album| %>
-    <%= render 'albums/album', album: album %>
+<div id="album-list">
+  <% if @collection.albums.size == 0 %>
+    <p class="callout-text lowered">
+      Your collection is empty. Add some albums!
+    </p>
+  <% else %>
+    <% @collection.albums.each do |album| %>
+      <%= render 'albums/album', album: album %>
+    <% end %>
   <% end %>
-<% end %>
+</div>
