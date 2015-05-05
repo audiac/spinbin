@@ -40,9 +40,14 @@ class AlbumsController < ApplicationController
 
   def destroy
     album = Album.find(params[:id])
-    album.destroy
-    flash[:notice] = "Album removed from collection."
-    redirect_to :back
+    if album
+      album.destroy
+      flash[:notice] = "Album removed from collection."
+      redirect_to :back
+    else
+      flash[:error] = "Could not remove album."
+      render 'collections/show'
+    end
   end
 
   private
